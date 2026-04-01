@@ -63,7 +63,13 @@ background-size:cover;background-position:center;display:flex;align-items:center
   padding:1.1rem;
   box-shadow:0 8px 24px rgba(30,42,53,.06);
 }
-.photo{width:100%;aspect-ratio:1/1;border-radius:var(--radius-lg);border:1px solid var(--line);display:grid;place-items:center}
+.photo{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--line);
+  overflow:hidden;
+}
 .section-title{margin:2rem 0 .6rem;font-size:18px}
 .divider{height:1px;background:var(--line);margin:1.4rem 0}
 .badge{display:inline-flex;padding:.2rem .55rem;border-radius:999px;border:1px solid var(--line);background:var(--soft);color:var(--muted);font-weight:800;font-size:12px}
@@ -94,15 +100,183 @@ footer.site-footer{border-top:1px solid var(--line);background:#fff;padding:1.6r
 
 /* text logo */
 .logo-text{
-  height:120px;
-  width:auto;
-}
-@media (max-width:700px){
-  .logo-text{
-    display:none;
-  }
-
+  height:120px; width:auto; } @media (max-width:700px){ .logo-text{ display:none; }
   .logo-icon{
     height:38px;
   }
 }
+
+/* =========================
+   MOBILE MENU (PREMIUM)
+========================= */
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:30px;
+  height:25px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  z-index:40;
+}
+
+.menu-toggle span{
+  display:block;
+  height:3px;
+  width:100%;
+  background:var(--text);
+  border-radius:2px;
+  transition:0.3s ease;
+}
+
+/* animatie -> X */
+.menu-toggle.open span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2){
+  opacity:0;
+}
+.menu-toggle.open span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+@media (max-width:768px){
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .navlinks{
+    position:absolute;
+    top:80px;
+    right:20px;
+
+    flex-direction:column;
+    gap:10px;
+
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+
+    padding:18px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+
+    /* animatie */
+    opacity:0;
+    transform:translateY(-10px) scale(0.98);
+    pointer-events:none;
+    transition:all .25s ease;
+  }
+
+  .navlinks.active{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+  }
+
+  .navlinks a{
+    padding:.6rem .8rem;
+    border-radius:10px;
+    width:100%;
+  }
+
+  .navlinks a:hover{
+    background:var(--soft);
+  }
+}
+
+
+/* =========================
+   SOCIAL SVG ICONS PREMIUM
+========================= */
+
+.socials{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.socials a{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+  border:1px solid var(--line);
+
+  background:var(--card);
+  color:var(--muted);
+
+  transition:all .25s ease;
+}
+
+/* SVG */
+.socials svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+}
+
+/* hover premium */
+.socials a:hover{
+  color:var(--text);
+  border-color:var(--accent);
+  background:var(--soft);
+  transform:translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .socials{
+    margin-top:10px;
+    justify-content:center;
+  }
+}none
+
+@media (max-width:768px){
+  .hero-image{
+    background:linear-gradient(
+      180deg,
+      rgba(31,53,40,0.75),
+      rgba(31,53,40,0.95)
+    ),
+    url("images/hero.jpg");
+    background-size:cover;
+    background-position:center;
+  }
+}
+
+@media (max-width:768px){
+
+  .hero-content{
+    padding:22px;
+  }
+
+  .hero-content h1{
+    font-size:20px;
+    margin-bottom:10px;
+  }
+
+  .hero-content h2{
+    font-size:14px;
+    margin-bottom:22px;
+  }
+
+  .hero-content div{
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
